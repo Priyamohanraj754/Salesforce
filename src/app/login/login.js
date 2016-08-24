@@ -105,6 +105,8 @@ function LoginController($state, $stateParams, $exceptionHandler, OrderCloud, Lo
     vm.rememberStatus = false;
 
     vm.submit = function() {
+        console.log(vm.credentials);
+        console.log(OrderCloud);
         OrderCloud.Auth.GetToken(vm.credentials)
             .then(function(data) {
                 vm.rememberStatus ? TokenRefresh.SetToken(data['refresh_token']) : angular.noop();
