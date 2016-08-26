@@ -29,10 +29,7 @@ function AutoLoginController($state, $stateParams, $exceptionHandler, OrderCloud
 
     vm.token = $stateParams.token;
     vm.timestamp = $stateParams.timestamp;
-    vm.encryptstamp = $stateParams.encryptstamp;
-
-    // TODO: Check that stamp matches with encryptstamp
-
+    //vm.encryptstamp = $stateParams.encryptstamp;
 
     vm.form = 'login';
     vm.submit = function() {
