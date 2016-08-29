@@ -7,7 +7,7 @@ angular.module('orderCloud')
 function AutoLoginConfig($stateProvider) {
     $stateProvider
         .state('autoLogin', {
-            url: '/autoLogin/:token/:timestamp/:encryptstamp',
+            url: '/autoLogin/:token/:catid/:timestamp/:encryptstamp',
             templateUrl: 'autoLogin/templates/autoLogin.tpl.html',
             controller: 'AutoLoginCtrl',
             controllerAs: 'autoLogin'
@@ -30,18 +30,21 @@ function AutoLoginController($state, $stateParams, $exceptionHandler, OrderCloud
     vm.token = $stateParams.token;
     vm.timestamp = $stateParams.timestamp;
     vm.encryptstamp = $stateParams.encryptstamp;
+    vm.catid = $stateParams.catid;
 
     vm.form = 'login';
     vm.submit = function() {
         OrderCloud.BuyerID.Set(buyerid);
         OrderCloud.Auth.SetToken(vm.token);
-        $state.go('home');
+        if(vm.catid){
+          $state.go('catalog.category', {'categoryid':vm.catid});
+        } else {
+          $state.go('catalog');
+        }
     };
 
-    // Testing login security
     var loginTest = function(response) {
       var loginCheck = response.data;
-      console.log(loginCheck);
       if(loginCheck){
         vm.submit();
       }

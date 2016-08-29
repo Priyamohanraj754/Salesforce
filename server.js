@@ -10,7 +10,6 @@ const crypto = require('crypto');
 
 // Used to check auto-login param security
 app.use('/checklogin/:t/:ts', function (req, res, next) {
-  console.log(req.params);
   var hashResult = validateTimeHash(req.params.t, req.params.ts);
   res.send(hashResult);
 });
@@ -43,22 +42,10 @@ function validateTimeHash(t, ts) {
     return false;
   }
 
-  // TODO: Remove after testing!
-  console.log(process.env.HASH_SECRET);
-  if(!process.env.HASH_SECRET) {
-    process.env['HASH_SECRET'] = "xB+EPTs3FPM7C+Nr0eNJcHnuD26DReJFwjU9X0wmJJY="
-  }
-  
-
   var secret = process.env.HASH_SECRET;
-  console.log(secret);
-
   var hash = crypto.createHmac('sha256', secret)
                  .update(t)
                  .digest('hex');
-
-  //console.log("CONVERTED");
-  //console.log(hash);
 
   return ts == hash;
 }
