@@ -44,9 +44,11 @@ function validateTimeHash(t, ts) {
   }
 
   // TODO: Remove after testing!
+  console.log(process.env.HASH_SECRET);
   if(!process.env.HASH_SECRET) {
     process.env['HASH_SECRET'] = "xB+EPTs3FPM7C+Nr0eNJcHnuD26DReJFwjU9X0wmJJY="
   }
+  
 
   var secret = process.env.HASH_SECRET;
   console.log(secret);
