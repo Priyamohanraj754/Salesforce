@@ -24,7 +24,7 @@ OrderCloud/
 ```
 
 ## Configure WebStorm
-WebStorm is our chosen development IDE. It provides an interface for the capabilities of the seed projects configuration. 
+WebStorm is our chosen development IDE. It provides an interface for the capabilities of the seed projects configuration.
 
 ### Karma Unit Testing
 Once you've installed the prerequisites and run your gulp build you can setup and run your Karma tests.
@@ -82,7 +82,7 @@ of the tools](tools.md) before continuing with this section.
 Here it is:
 
 `OrderCloud` uses [Gulp](http://gulpjs.com/) as its build system, so
-[Node.js](http://nodejs.org) is required. Also, we are using Gulp 4.0 prior to 
+[Node.js](http://nodejs.org) is required. Also, we are using Gulp 4.0 prior to
 its official release date. You can install Gulp 4.0 on your machine globally by running
 the following command:
 
@@ -139,7 +139,7 @@ application. Using `browser-sync` and some built in gulp functions the app is no
 for changes in your source directory. Should you make any changes to your html or js files
 the app should automatically reload your application with the appropriate changes. Also
 if you make any changes to your style sheets (less or css) the app will rebuild those changes
-and inject them directly into the application, without reloading the entire page! 
+and inject them directly into the application, without reloading the entire page!
 
 When you're ready to push your app into production, just run the `compile`
 command:
@@ -161,3 +161,5 @@ task, which runs `build` and then `compile`:
 ```sh
 $ gulp
 ```
+
+NOTE: An environment variable named `HASH_SECRET` is needed as well.
