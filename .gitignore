@@ -8,3 +8,5 @@ errorShots/
 .idea
 .env
 plato/
+*.sublime-project
+*.sublime-workspace
