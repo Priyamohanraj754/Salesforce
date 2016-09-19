@@ -1,7 +1,5 @@
 #BASE {
   background-color:@body-bg;
-  overflow:hidden;
-  height:100%;
   display:flex;
   flex-flow:column nowrap;
 }
@@ -38,6 +36,25 @@
 #BASE_TOP {
   .navbar {
     border-top-width:0;
+    background-color:#FFF;
+    font-size:18px;
+  }
+  .navbar-brand {
+    font-size:27px;
+    font-weight: 700;
+  }
+  .top-nav {
+    background-color:#039491;
+    min-height: 50px;
+    color:#FFF;
+  }
+}
+@media(min-width:@screen-sm-min) {
+  #BASE_TOP {
+    .navbar {
+      min-height: 156px;
+      padding-top:58px;
+    }
   }
 }
 
