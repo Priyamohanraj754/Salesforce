@@ -12,7 +12,8 @@ function CategoryConfig($stateProvider) {
             controllerAs: 'category',
             resolve: {
                 CategoryList: function($stateParams, OrderCloud) {
-                    return OrderCloud.Me.ListCategories(null, null, null, null, null, {ParentID: $stateParams.categoryid}, 'all');
+                    var depth = 1;
+                    return OrderCloud.Me.ListCategories(null, null, null, null, null, {ParentID: $stateParams.categoryid}, depth);
                 },
                 ProductList: function($stateParams, OrderCloud) {
                     return OrderCloud.Me.ListProducts(null, null, null, null, null, null, $stateParams.categoryid);
