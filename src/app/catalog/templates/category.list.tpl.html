@@ -1,6 +1,9 @@
 <article id="CategoryList">
-    <h3 ng-if="categorylist.length > 0" class="page-header">
+    <h3 ng-if="categorylist.length > 0 && categorylist[0].ParentID === 'MainCatalog'" class="page-header">
         {{categorylist.length > 1 ? 'Vendors' : 'Vendor'}}
+    </h3>
+    <h3 ng-if="categorylist.length > 0 && categorylist[0].ParentID !== 'MainCatalog'" class="page-header">
+        {{categorylist.length > 1 ? 'Categories' : 'Category'}}
     </h3>
     <div class="category-list row">
         <div class="category-list-item col-md-3" ng-repeat="category in categorylist">
