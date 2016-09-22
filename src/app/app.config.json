@@ -1,7 +1,7 @@
 {
 	"appname": "aacBuyer",
 	"scope": "AddressAdmin AddressReader ApprovalRuleAdmin ApprovalRuleReader BuyerAdmin BuyerUserAdmin BuyerUserReader CategoryAdmin CategoryReader CostCenterAdmin CostCenterReader CreditCardAdmin CreditCardReader DevCenterWebHookAdmin FullAccess InventoryAdmin MeAddressAdmin MeAdmin MeCreditCardAdmin MeXpAdmin OrderAdmin OrderReader OverrideShipping OverrideTax OverrideUnitPrice PermissionAdmin PriceScheduleAdmin PriceScheduleReader ProductAdmin ProductAssignmentAdmin ProductReader PromotionAdmin PromotionReader SetSecurityProfile SpendingAccountAdmin SpendingAccountReader UnsubmittedOrderReader UserGroupAdmin UserGroupReader BuyerReader",
-	"clientid": "F7297FD1-A8E4-4081-9875-0B6C81882969",
+	"clientid": "1B72EA94-28F0-43BD-8FF7-736C4535C0BA",
 	"buyerid": "AACBuyer",
 	"clientsecret": "myclientsecret",
 	"environment": "prod",
