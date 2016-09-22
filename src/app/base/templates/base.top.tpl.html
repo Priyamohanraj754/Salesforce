@@ -1,6 +1,15 @@
 <nav class="top-nav">
-<img src="" alt="Adopt-a-Classroom" />
-Teacher Store
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <a href="#" class="exitstore">&lt; Exit store</a>
+            </div>
+            <div class="col-sm-8 text-center">
+                <img class="aac-logo" src="/compile/assets/images/images/aac-logo.png" alt="Adopt-a-Classroom" />
+                Teacher Store
+            </div>
+        </div>
+    </div>
 </nav>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -12,23 +21,14 @@ Teacher Store
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/catalog/category/1MainCatalog"{{base.currentUser.FirstName + ' ' + base.currentUser.LastName}}</a>
+            <span class="navbar-brand">{{base.currentUser.FirstName + ' ' + base.currentUser.LastName}}</span>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="BASE_TOP_COLLAPSE">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/account/">My Account</a></li>
+                <li><a href="/catalog/category/MainCatalog">Home</a></li>
                 <li><a href="/myorders/">Order History</a></li>
-                <li uib-dropdown ng-if="!base.currentUser.Anonymous">
-                    <a href="#" uib-dropdown-toggle role="button"><i class="fa fa-user"></i> Account <span class="caret"></span></a>
-                    <ul uib-dropdown-menu>
-                        <li class="dropdown-header">{{base.currentUser.FirstName + ' ' + base.currentUser.LastName}}</li>
-                        <li><a href="" ui-sref="account">Account</a></li>
-                        <li class="divider"></li>
-                        <li><a ng-click="application.logout()">Logout</a></li>
-                    </ul>
-                </li>
                 <li ng-if="base.currentUser.Anonymous && base.registrationAvailable">
                     <a href="" ui-sref="registration" ui-sref-active="active">Register/Login</a>
                 </li>
