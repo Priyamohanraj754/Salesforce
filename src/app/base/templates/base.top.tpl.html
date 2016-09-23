@@ -5,8 +5,8 @@
                 <a href="#" class="exitstore">&lt; Exit store</a>
             </div>
             <div class="col-sm-8 text-center">
-                <img class="aac-logo" src="/compile/assets/images/images/aac-logo.png" alt="Adopt-a-Classroom" />
-                Teacher Store
+                <a class="top-nav-home" href="" ui-sref="catalog.category({categoryid:'MainCatalog'})"><img class="aac-logo" src="/compile/assets/images/images/aac-logo.png" alt="Adopt-a-Classroom" />
+                Teacher Store</a>
             </div>
         </div>
     </div>
@@ -27,8 +27,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="BASE_TOP_COLLAPSE">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/catalog/category/MainCatalog">Home</a></li>
-                <li><a href="/myorders/">Order History</a></li>
+                <li><a href="" ui-sref="catalog.category({categoryid:'MainCatalog'})">Home</a></li>
+                <li><a href="" ui-sref="myOrders">Order History</a></li>
                 <li ng-if="base.currentUser.Anonymous && base.registrationAvailable">
                     <a href="" ui-sref="registration" ui-sref-active="active">Register/Login</a>
                 </li>

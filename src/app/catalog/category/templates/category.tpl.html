@@ -1,6 +1,14 @@
 <article>
+		<div ng-show="category.$resolve.$stateParams.categoryid !== 'MainCatalog'" class="category-header row">
+        <div class="col-sm-9">
+            <h4>{{category.$resolve.$stateParams.categoryid}}</h4>
+        </div>
+        <div class="col-sm-3">
+            <h4><a href="" ui-sref="catalog.category({categoryid:'MainCatalog'})">All vendors</a></h4>
+        </div>
+    </div>
     <ordercloud-category-list categorylist="category.categories.Items"></ordercloud-category-list>
-    <ordercloud-product-list productlist="category.products.Items"></ordercloud-product-list>
+    <ordercloud-product-list ng-show="!category.categories.Items.length" productlist="category.products.Items"></ordercloud-product-list>
     <div class="well well-lg text-center" ng-if="category.categories.Items.length === 0 && category.products.Items.length === 0">
         <b>The selected category has no assigned categories or products that are visible to you.</b>
     </div>
