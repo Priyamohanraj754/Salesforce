@@ -1,23 +1,12 @@
 <form name="OCProductForm" ng-submit="product.addToCart(product.item)" id="product_view">
     <fieldset class="form-group">
         <div class="row">
-            <div ng-class="{'col-md-6': product.item.xp.image, 'col-md-12': !product.item.xp.image}">
+            <div class="col-md-6">
+                <h1>{{product.item.Name || product.item.ID}}</h1>
+                <h5 ng-if="product.item.Name">{{product.item.ID}}</h5>
                 <!--PRODUCT IMAGE-->
                 <img class="img-responsive" ng-if="product.item.xp.image.URL" ng-src="{{product.item.xp.image.URL}}" alt="Product Image">
-                <div class="panel panel-default" ng-if="product.item.Description && product.item.xp.image.URL">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Description</h3>
-                    </div>
-                    <div class="panel-body">
-                        {{product.item.Description}}
-                    </div>
-
-                </div>
-            </div>
-            <div ng-class="{'col-md-6': product.item.xp.image, 'col-md-12': !product.item.xp.image}">
-                <h1>{{product.item.Name || product.item.ID}}</h1>
-                <h3 ng-if="product.item.Name">{{product.item.ID}}</h3>
-                <div class="panel panel-default" ng-if="product.item.Description && !product.item.xp.image.URL">
+                <div class="panel panel-default" ng-if="product.item.Description">
                     <div class="panel-heading">
                         <h3 class="panel-title">Description</h3>
                     </div>
@@ -46,6 +35,9 @@
                 </div>
                 <oc-spec-form product="product"></oc-spec-form>
                 <oc-add-to-order product="product" formname="OCProductForm"></oc-add-to-order>
+                <!--
+                <a class="btn btn-cancel" href="" ui-sref="">Cancel</a>
+                -->
             </div>
         </div>
     </fieldset>
