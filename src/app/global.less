@@ -294,3 +294,62 @@ colgroup {
     }
   }
 }
+.page-header {
+  margin-top:0;
+  border-bottom:0;
+  font-size:36px;
+  margin-bottom:30px;
+  padding-bottom:0;
+  font-weight: bold;
+}
+@media(min-width:@screen-sm-min) {
+  .page-header {
+    margin-bottom:80px;
+  }
+}
+.panel-default {
+  border:0;
+  background:none;
+}
+.panel-default > .panel-heading, .panel-default > .panel-footer {
+  background-color:#E6F7F7;
+  border:0;
+  padding:20px;
+  font-size:18px;
+  font-weight: bold;
+  .panel-title, h4 {
+    font-weight: bold;
+    margin:0;
+  }
+  .text-success {
+    color:#383532;
+  }
+}
+.panel-default > .panel-heading {
+
+}
+.panel-default > .panel-footer {
+  margin-top: 40px;
+}
+.table-hover > tbody > tr:hover {
+  background-color:inherit;
+}
+.panel-default .table {
+  background-color:#FFF;
+  margin-bottom:0;
+  border-bottom: 1px solid #D9D9D9;
+  td {
+    padding-top:20px;
+    padding-bottom:20px;
+  }
+  input.form-control[type='number'] {
+    height:60px;
+    border-radius: 0;
+    border-color: #757575;
+    font-size: 18px;
+    color: #383532;
+  }
+}
+.btn {
+  border-radius: 0;
+}
