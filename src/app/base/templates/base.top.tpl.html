@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2">
-                <a href="#" class="exitstore">&lt; Exit store</a>
+                <a href="{{base.storeUrl}}"
+                   ng-click="app.logout();"
+                   class="exitstore">&lt; Exit store</a>
             </div>
             <div class="col-sm-8 text-center">
                 <a class="top-nav-home" href="" ui-sref="catalog.category({categoryid:'MainCatalog'})"><img class="aac-logo" src="/compile/assets/images/images/aac-logo.png" alt="Adopt-a-Classroom" />
