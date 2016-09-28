@@ -71,9 +71,9 @@
                                 <div class="panel-body">
                                     <p>
                                         {{myOrderEdit.order.BillingAddress.AddressName}}
-                                        <br>{{myOrderEdit.order.BillingAddress.FirstName}} {{myOrderEdit.order.BillingAddress.LastName}}
-                                        <br>{{myOrderEdit.order.BillingAddress.Street1}} {{myOrderEdit.order.BillingAddress.Street2}}
-                                        <br>{{myOrderEdit.order.BillingAddress.City}}, {{myOrderEdit.order.BillingAddress.State}} {{myOrderEdit.order.BillingAddress.Zip}}
+                                        <br />{{myOrderEdit.order.BillingAddress.FirstName}} {{myOrderEdit.order.BillingAddress.LastName}}
+                                        <br />{{myOrderEdit.order.BillingAddress.Street1}} {{myOrderEdit.order.BillingAddress.Street2}}
+                                        <br />{{myOrderEdit.order.BillingAddress.City}}, {{myOrderEdit.order.BillingAddress.State}} {{myOrderEdit.order.BillingAddress.Zip}}
                                     </p>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                     <div class="col-sm-6" ng-form="CustomBillingAddress = true">
                         <button type="button" class="btn btn-default btn-block" ng-click="customAddress = !customAddress">Use Custom Address</button>
                         <div uib-collapse="!customAddress">
-                            <hr>
+                            <hr />
                             <div class="well well-lg">
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
@@ -160,14 +160,11 @@
                             <i class="fa fa-question-circle"
                                uib-tooltip="Updates the Shipping Address ID on all Line Items associated with this Order. If all Line Items associated with this Order share the same Shipping Address ID, this field's value will be provided. Otherwise, null."></i>
                         </label>
-                        <input
-
-                                id="orderShipAddInput"
+                        <input id="orderShipAddInput"
                                 type="text"
                                 class="form-control"
                                 ng-model="myOrderEdit.order.ShippingAddressID"
-                                uib-typeahead="address.ID as address.AddressName for address in myOrderEdit.shippingAddressTypeAhead($viewValue)"
-                        />
+                                uib-typeahead="address.ID as address.AddressName for address in myOrderEdit.shippingAddressTypeAhead($viewValue)" />
                     </div>
                     <div class="form-group col-sm-6" ng-form="CustomShippingAddress">
                         <button type="button" class="btn btn-default btn-block"
