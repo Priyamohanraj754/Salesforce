@@ -107,7 +107,7 @@ function BaseConfig($stateProvider, $injector) {
     $stateProvider.state('base', baseState);
 }
 
-function BaseController($rootScope, $ocMedia, Underscore, snapRemote, defaultErrorMessageResolver, CurrentUser, ComponentList, base) {
+function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, defaultErrorMessageResolver, CurrentUser, ComponentList, base) {
     var vm = this;
     vm.left = base.left;
     vm.right = base.right;
@@ -115,6 +115,7 @@ function BaseController($rootScope, $ocMedia, Underscore, snapRemote, defaultErr
     vm.catalogItems = ComponentList.nonSpecific;
     vm.organizationItems = ComponentList.buyerSpecific;
     vm.registrationAvailable = Underscore.filter(vm.organizationItems, function(item) { return item.StateRef == 'registration' }).length;
+    vm.storeUrl = "";
 
     defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
         errorMessages['customPassword'] = 'Password must be at least eight characters long and include at least one letter and one number';
@@ -149,6 +150,11 @@ function BaseController($rootScope, $ocMedia, Underscore, snapRemote, defaultErr
     $rootScope.$watch(_isMobile, function(n, o) {
         if (n === o) return;
         _initDrawers(n);
+    });
+
+
+    $http.get("/communityUrl").then(function(response) {
+      vm.storeUrl = response.data;
     });
 }
 

@@ -14,6 +14,10 @@ app.use('/checklogin/:t/:ts', function (req, res, next) {
   res.send(hashResult);
 });
 
+app.get("/communityUrl", function(request, response) {
+  response.json(process.env.COMMUNITY_URL);
+});
+
 switch (env) {
   case 'production':
     console.log('*** PROD ***');
