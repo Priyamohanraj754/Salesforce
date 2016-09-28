@@ -10,8 +10,13 @@ const crypto = require('crypto');
 
 // Used to check auto-login param security
 app.use('/checklogin/:t/:ts', function (req, res, next) {
+  console.log(process.env.HASH_SECRET);
   var hashResult = validateTimeHash(req.params.t, req.params.ts);
   res.send(hashResult);
+});
+
+app.get("/communityUrl", function(request, response) {
+  response.json(process.env.COMMUNITY_URL);
 });
 
 switch (env) {
