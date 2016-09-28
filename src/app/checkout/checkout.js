@@ -347,6 +347,7 @@ function CheckoutLineItemsController($rootScope, $scope, $q, Underscore, toastr,
     vm.lineItems = {};
     vm.UpdateQuantity = LineItemHelpers.UpdateQuantity;
     vm.UpdateShipping = LineItemHelpers.UpdateShipping;
+
     vm.setCustomShipping = LineItemHelpers.CustomShipping;
     vm.RemoveItem = LineItemHelpers.RemoveItem;
     //vm.calculatingTax = false;

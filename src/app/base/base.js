@@ -107,7 +107,7 @@ function BaseConfig($stateProvider, $injector) {
     $stateProvider.state('base', baseState);
 }
 
-function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, defaultErrorMessageResolver, CurrentUser, ComponentList, base) {
+function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, defaultErrorMessageResolver, CurrentUser, ComponentList, base, LoginService) {
     var vm = this;
     vm.left = base.left;
     vm.right = base.right;
@@ -116,6 +116,10 @@ function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, def
     vm.organizationItems = ComponentList.buyerSpecific;
     vm.registrationAvailable = Underscore.filter(vm.organizationItems, function(item) { return item.StateRef == 'registration' }).length;
     vm.storeUrl = "";
+
+    vm.logout = function() {
+        LoginService.Logout();
+    };
 
     defaultErrorMessageResolver.getErrorMessages().then(function (errorMessages) {
         errorMessages['customPassword'] = 'Password must be at least eight characters long and include at least one letter and one number';
