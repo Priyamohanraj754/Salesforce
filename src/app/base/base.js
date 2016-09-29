@@ -107,7 +107,9 @@ function BaseConfig($stateProvider, $injector) {
     $stateProvider.state('base', baseState);
 }
 
-function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, defaultErrorMessageResolver, CurrentUser, ComponentList, base, LoginService) {
+function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote,
+      defaultErrorMessageResolver, CurrentUser, ComponentList, base,
+        LoginService, OrderCloud) {
     var vm = this;
     vm.left = base.left;
     vm.right = base.right;
@@ -116,6 +118,21 @@ function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, def
     vm.organizationItems = ComponentList.buyerSpecific;
     vm.registrationAvailable = Underscore.filter(vm.organizationItems, function(item) { return item.StateRef == 'registration' }).length;
     vm.storeUrl = "";
+
+    vm.getAvailableBalance = function() {
+      OrderCloud.SpendingAccounts.List().then(function(result) {
+        var spendingAccounts = result.Items;
+        var balance = 0;
+
+        angular.forEach(spendingAccounts, function(sa) {
+          balance += sa.Balance;
+        });
+
+        vm.availableFunds = balance;
+      }).catch(function(error) {
+
+      });
+    }
 
     vm.logout = function() {
         LoginService.Logout();
@@ -155,6 +172,8 @@ function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote, def
         if (n === o) return;
         _initDrawers(n);
     });
+
+    vm.getAvailableBalance();
 
 
     $http.get("/communityUrl").then(function(response) {
