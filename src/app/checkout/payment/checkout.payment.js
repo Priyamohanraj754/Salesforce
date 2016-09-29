@@ -31,7 +31,6 @@ function CheckoutPaymentController($state, Underscore, toastr, OrderCloud, Avail
     vm.allowMultiplePayments = allowMultiplePayments;
     vm.currentOrderPayments = OrderPayments.Items;
     vm.paymentMethods = [
-        {Display: 'Purchase Order', Value: 'PurchaseOrder'},
         {Display: 'Credit Card', Value: 'CreditCard'},
         {Display: 'Spending Account', Value: 'SpendingAccount'}//,
         //{Display: 'Pay Pal Express Checkout', Value: 'PayPalExpressCheckout'}
