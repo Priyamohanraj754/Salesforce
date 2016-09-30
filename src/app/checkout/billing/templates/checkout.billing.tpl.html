@@ -8,20 +8,5 @@
             </div>
             <p id="address_paragraph" ng-if="checkout.currentOrder.BillingAddress">{{checkout.currentOrder.BillingAddress | address: 'full'}}</p>
         </div>
-        <div class="form-group">
-            <button ng-click="checkoutBilling.customAddress = true;" type="button" class="btn btn-success"><i class="fa fa-plus-circle"></i> Use Custom</button>
-        </div>
-        <div ng-if="checkoutBilling.customAddress">
-            <form class="form-group" ng-submit="checkoutBilling.SaveCustomAddress(checkout.currentOrder)" name="order_billing">
-                <ordercloud-address-form address="checkoutBilling.address" isbilling="true"></ordercloud-address-form>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label><input type="checkbox" ng-model="checkoutBilling.saveAddress"> Save Address for Future Use</label>
-                    </div>
-                </div>
-                <button ng-disabled="order_billing.address_form.$invalid" type="submit" class="btn btn-success pull-left">Submit</button>
-                <button ng-click="checkoutBilling.customAddress = false;" type="button" class="btn btn-danger pull-right">Cancel</button>
-            </form>
-        </div>
     </div>
 </div>
