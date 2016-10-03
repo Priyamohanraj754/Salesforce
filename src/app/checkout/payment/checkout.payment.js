@@ -43,7 +43,8 @@ function CheckoutPaymentController($state, Underscore, toastr, OrderCloud, Avail
     ];
     vm.today = new Date();
     vm.creditCards = AvailableCreditCards.Items;
-    vm.spendingAccounts = AvailableSpendingAccounts.Items;
+    vm.spendingAccounts = [];
+    //vm.spendingAccounts = AvailableSpendingAccounts.Items;
     vm.months =['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     vm.years = Underscore.range(vm.today.getFullYear(), vm.today.getFullYear() + 20, 1);
     vm.expireMonth = creditCardExpirationDate.expirationMonth;
@@ -60,6 +61,27 @@ function CheckoutPaymentController($state, Underscore, toastr, OrderCloud, Avail
     vm.setAmountMax = SetAmountMax;
     vm.savePONumber = SavePONumber;
     vm.expirationDateChange = ExpirationDateChange;
+
+		vm.getSpendingAccounts = function() {
+			vm.spendingAccounts = [];
+			OrderCloud.Me.Get().then(function(result) {
+				var userId = result.ID;
+
+				OrderCloud.SpendingAccounts.ListAssignments(null, userId, null, null,
+					  null, null).then(function(accountsResult) {
+					var accountAssignments = accountsResult.Items;
+
+					angular.forEach(accountAssignments, function(a) {
+						OrderCloud.SpendingAccounts.Get(a.SpendingAccountID).then(
+						    function(aResult) {
+							vm.spendingAccounts.push(aResult);
+						});
+					});
+				});
+			});
+		}
+
+		vm.getSpendingAccounts();
 
     function CreatePayment(order) {
         OrderCloud.Payments.Create(order.ID, {Type: vm.currentOrderPayments[0].Type})

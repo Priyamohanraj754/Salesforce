@@ -119,20 +119,24 @@ function BaseController($rootScope, $ocMedia, $http, Underscore, snapRemote,
     vm.registrationAvailable = Underscore.filter(vm.organizationItems, function(item) { return item.StateRef == 'registration' }).length;
     vm.storeUrl = "";
 
-    vm.getAvailableBalance = function() {
-      OrderCloud.SpendingAccounts.List().then(function(result) {
-        var spendingAccounts = result.Items;
-        var balance = 0;
+		vm.getAvailableBalance = function() {
+      vm.availableFunds = 0;
+			OrderCloud.Me.Get().then(function(result) {
+				var userId = result.ID;
 
-        angular.forEach(spendingAccounts, function(sa) {
-          balance += sa.Balance;
-        });
+				OrderCloud.SpendingAccounts.ListAssignments(null, userId, null, null,
+					  null, null).then(function(accountsResult) {
+					var accountAssignments = accountsResult.Items;
 
-        vm.availableFunds = balance;
-      }).catch(function(error) {
-
-      });
-    }
+					angular.forEach(accountAssignments, function(a) {
+						OrderCloud.SpendingAccounts.Get(a.SpendingAccountID).then(
+						    function(aResult) {
+							vm.availableFunds += aResult.Balance;
+						});
+					});
+				});
+			});
+		}
 
     vm.logout = function() {
         LoginService.Logout();
